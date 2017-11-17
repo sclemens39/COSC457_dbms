@@ -210,12 +210,6 @@ INSERT INTO Song(Name, Duration, Year_Released, Band_id, Album, Song_id)
 
 
 
-
-
-
-
-
-
 ---------------------- INSERTING PERFORMANCES ----------------------
 
 INSERT INTO Performance(Venue_id,Band_id,Performance_date,Duration,Performance_id)
@@ -248,50 +242,50 @@ INSERT INTO Performance(Venue_id,Band_id,Performance_date,Duration,Performance_i
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
     Values('Gorge Amphitheatre', '754 Silica Road Northwest', 'George', 'WA', 1985, NULL,'v01');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('72 Meadowbrook Ln', 'Gilford', 'NH',1996,NULL,'v02');
+    Values('Trocadero','72 Meadowbrook Ln', 'Gilford', 'NH',1996,NULL,'v02');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('901 W Sprague Ave','Spokane','WA',1915,NULL,'v03');
+    Values('Black Cat','901 W Sprague Ave','Spokane','WA',1915,NULL,'v03');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('500 Jefferson Ave', 'Toledo', 'OH', 1915, NULL,'v04');
+    Values('Electric Factory','500 Jefferson Ave', 'Toledo', 'OH', 1915, NULL,'v04');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('6 Championship Dr', 'Auburn Hills', 'MI', 1988,2017,'v05');
+    Values('Ottobar','6 Championship Dr', 'Auburn Hills', 'MI', 1988,2017,'v05');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('1001 Performance Pl', 'Grand Prarie', 'TX', 2002,NULL,'v06');
+    Values('Charles Theatre','1001 Performance Pl', 'Grand Prarie', 'TX', 2002,NULL,'v06');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('12880 E 146th St', 'Noblesvilli', 'IN', 1989,NULL,'v07');
+    Values('Powerplant Live','12880 E 146th St', 'Noblesvilli', 'IN', 1989,NULL,'v07');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('2401 W Wisconsin Ave', 'Milwaukee', 'WI',1927,NULL,'v08');
+    Values('Parkway','2401 W Wisconsin Ave', 'Milwaukee', 'WI',1927,NULL,'v08');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('885 S Main St', 'Mansfield', 'MA',1986,NULL,'v09');
+    Values('Royal Farms Arena','885 S Main St', 'Mansfield', 'MA',1986,NULL,'v09');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('15 Lansdowne','Boston','MA', 1992,NULL,'v10');
+    Values('Merriweather','15 Lansdowne','Boston','MA', 1992,NULL,'v10');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('5515 Wilshire Blvd', 'Los Angeles', 'CA', 1936,NULL,'v11');
+    Values('The Pavilion','5515 Wilshire Blvd', 'Los Angeles', 'CA', 1936,NULL,'v11');
 
 
 
 
 ---------------------- FAVORITE BANDS ----------------------
 
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e9302049','b4732');
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e8603543','b3850');
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e1029472','b4654');
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e9475934','b1028');
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e8462344','b8796');
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e3959303','b8796');
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e4857293','b5840');
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e9475734','b5769');
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e4757434','b3850');
-INSERT INTO FavoriteBands(User_id,Band_id0)
+INSERT INTO FavoriteBands(User_id,Band_id)
     Values('e8473645','b4654');
 
 
