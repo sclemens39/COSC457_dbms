@@ -1,140 +1,123 @@
 <!DOCTYPE html>
 <html>
-<!--CSS internal needs to be in head of html under <style> tags-->
+
 <head>
-<style>
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;	
-    border: none;
-    cursor: pointer;
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Music App</title>
+    <link href="style.css" rel="stylesheet">
 
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown a:hover {background-color: #f1f1f1}
-
-.show {display:block;}
-<!--
-body {margin:0;}
-
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-    background-color: #0000ff;
-    color: white;
-}
--->
-</style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+<script src=" https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
 </head>
+
 <body>
-<div class="dropdown">
-<button onclick="myFunction()" class="dropbtn">Insert</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a class="active" href="#home">Home</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addSongInformation.php">Add A Song</a>
-  <a href="#show_top10">Top 10</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addBandInformation.php">Add a Band</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addMemberInformation.php">Add A Member</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addShowInformation.php">Add A Show</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addUserInformation.php">Add A User</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addVenueInformation.php">Add Venue</a>
-  </div>
-  
-<!-- Delete Drop down -->
-<button onclick="myFunction()" class="dropbtn">Delete</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
-</div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Music App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Browse
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Popular Albums</a>
+                        <a class="dropdown-item" href="#">Popular Artists</a>
+                        <a class="dropdown-item" href="#">Our Favorite Bands</a>
+                        <a class="dropdown-item" href="#">Shows Near You</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">More?!?</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search for songs" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Welcome to "Music App"</h1>
+            <p class="lead text-muted">Your one stop shop for anything relating to your favorite bands and artists!</p>
+            <p>
+                <a href="#" class="btn btn-primary">Login</a>
+                <a href="#" class="btn btn-secondary">Register</a>
+            </p>
+        </div>
+    </section>
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+    <div class="album text-muted">
+        <div class="container">
+            <h3 class="text-center">Top Albums</h3>
+            <div class="row">
+                <div class="card">
+                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                    <p class="card-text">dkfjsdlafjkladsjfla</p>
+                </div>
+                <div class="card">
+                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                    <p class="card-text">;sdlf;sdlf;sldf;lsd;f</p>
+                </div>
+                <div class="card">
+                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                    <p class="card-text">This is a test</p>
+                </div>
 
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
+                <div class="card">
+                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                    <p class="card-text">Or rather a placeholder</p>
+                </div>
+                <div class="card">
+                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                    <p class="card-text">Hello there.</p>
+                </div>
+                <div class="card">
+                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                    <p class="card-text">lkjdslfkjsadlfjlsdjflsdjflsdajf</p>
+                </div>
 
-<!-- Once we get the database set up and have a server
-	 the page links will replace #home, #addSong, #show_top10, ...
-<div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addSongInformation.php">Add A Song</a>
-  <a href="#show_top10">Top 10</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addBandInformation.php">Add a Band</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addMemberInformation.php">Add A Member</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addShowInformation.php">Add A Show</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addUserInformation.php">Add A User</a>
-  <a href="C:\Users\MasterScribe\Desktop\DBMS\Project\web_app\project\addVenueInformation.php">Add Venue</a>
-</div>
--->
+                <div class="card">
+                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                    <p class="card-text">Tdskfldsflksdlfs</p>
+                </div>
+                <div class="card">
+                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                    <p class="card-text">sdfdsafdasfsafsafdasf</p>
+                </div>
+                <div class="card">
+                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                    <p class="card-text">blahblahla</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div style="padding-left:16px">
-  <h2>Welcome to our Database Project Home page</h2>
-  <p>Some how we are going to convince ourselves web was the way to go</p>
-</div>
-
+    <footer class="text-muted">
+        <div class="container text-center">
+            <p>This is a footer</p>
+        </div>
+    </footer>
 </body>
+
 </html>
