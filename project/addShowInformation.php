@@ -9,53 +9,78 @@ if(isset($_POST['submit'])){
     
     $data_missing = array();
     
-    if(empty($_POST['state'])){
+    if(empty($_POST['Venue_id'])){
 
         // Adds name to array
-        $data_missing[] = 'state';
+        $data_missing[] = 'Venue_id';
 
     } else {
 
         // Trim white space from the name and store the name
-        $concert_state = trim($_POST['state']);
+        $Venue_id = trim($_POST['Venue_id']);
 
     }
 
-    if(empty($_POST['duration'])){
+    if(empty($_POST['Band_id'])){
+
+        // Adds name to array
+        $data_missing[] = 'Band_id';
+
+    } else {
+
+        // Trim white space from the name and store the name
+        $Band_id = trim($_POST['Band_id']);
+
+    }	
+	
+    if(empty($_POST['Performance_date'])){
+
+        // Adds name to array
+        $data_missing[] = 'Performance_date';
+
+    } else {
+
+        // Trim white space from the name and store the name
+        $Performance_date = trim($_POST['Performance_date']);
+
+    }	
+	
+    if(empty($_POST['Duration'])){
 
         // Adds name to array
         $data_missing[] = 'Duration';
 
     } else{
         
-		$concert_duration = trim($_POST['duration']);
+		$concert_duration = trim($_POST['Duration']);
 
     }
 
-    if(empty($_POST['city'])){
+    if(empty($_POST['Performance_id'])){
 
         // Adds name to array
-        $data_missing[] = 'city';
+        $data_missing[] = 'Performance_id';
 
     } else {
 
         // Trim white space from the name and store the name
-        $concert_city = trim($_POST['city']);
+        $Performance_id = trim($_POST['Performance_id']);
 
     }
-    
+
     if(empty($data_missing)){
         
         require_once('../mysqli_connect.php');
         
-        $query = "INSERT INTO performance (state, duration, city) 
-		VALUES (?, ?, ?)";
+        $query = "INSERT INTO performance (Venue_id, Band_id, Performance_date,
+		Duration, Performance_id) VALUES (?, ?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($dbc, $query);
         
 		//parameters = database var names
-        mysqli_stmt_bind_param($stmt, "sss", $concert_state,
-                              $concert_duration, $concert_city);
+        mysqli_stmt_bind_param($stmt, "ssiis", $Venue_id, $Band_id,
+								$Performance_date, $concert_duration, 
+								$Performance_id);
         
         mysqli_stmt_execute($stmt);
         
@@ -96,21 +121,29 @@ if(isset($_POST['submit'])){
 
 ?>
 
-<!--where here ever server is located-->
-<form action="localhost:8888/PHP/addShowInformation.php" method="post">
+<!--where ever server is located-->
+<form action="addShowInformation.php" method="post">
     
 <b>Add a New Show or Concert</b>
     
-<p>State:
-<input type="text" name="state" size="30" value="" />
+<p>Venue ID:
+<input type="text" name="Venue_id" size="30" value="" />
 </p>
 
-<p>City:
-<input type="text" name="city" size="4" value="" />
+<p>Band ID:
+<input type="text" name="Band_id" size="10" value="" />
+</p>
+
+<p>Performance_date:
+<input type="text" name="Performance_date" size="10" value="" />
 </p>
 
 <p>Duration:
-<input type="text" name="duration" size="10" value="" />
+<input type="text" name="Duration" size="10" value="" />
+</p>
+
+<p>Performance ID:
+<input type="text" name="Performance_id" size="10" value="" />
 </p>
 
 <p>

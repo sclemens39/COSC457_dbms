@@ -9,41 +9,53 @@ if(isset($_POST['submit'])){
     
     $data_missing = array();
     
-    if(empty($_POST['f_name'])){
+    if(empty($_POST['Fname'])){
 
         // Adds name to array
-        $data_missing[] = 'first name';
+        $data_missing[] = 'Fname';
 
     } else {
 
         // Trim white space from the name and store the name
-        $u_f_name = trim($_POST['f_name']);
+        $Fname = trim($_POST['Fname']);
 
     }
 
-    if(empty($_POST['l_name'])){
+    if(empty($_POST['Lname'])){
 
         // Adds name to array
-        $data_missing[] = 'last name';
+        $data_missing[] = 'Lname';
 
     } else{
         
-		$u_l_name = trim($_POST['l_name']);
+		$Lname = trim($_POST['Lname']);
 
     }
 
-    if(empty($_POST['status'])){
+    if(empty($_POST['Admin'])){
 
         // Adds name to array
-        $data_missing[] = 'status';
+        $data_missing[] = 'Admin';
 
     } else {
 
         // Trim white space from the name and store the name
-        $u_status = trim($_POST['status']);
+        $Admin = trim($_POST['Admin']);
 
-    }
+    } 
 
+    if(empty($_POST['User_id'])){
+
+        // Adds name to array
+        $data_missing[] = 'User_id';
+
+    } else {
+
+        // Trim white space from the name and store the name
+        $User_id = trim($_POST['User_id']);
+
+    }	
+	
     if(empty($_POST['age'])){
 
         // Adds name to array
@@ -55,19 +67,31 @@ if(isset($_POST['submit'])){
         $u_age = trim($_POST['age']);
 
     }
+
+    if(empty($_POST['email'])){
+
+        // Adds name to array
+        $data_missing[] = 'email';
+
+    } else {
+
+        // Trim white space from the name and store the name
+        $email = trim($_POST['email']);
+
+    }
     
     if(empty($data_missing)){
         
         require_once('../mysqli_connect.php');
         
-        $query = "INSERT INTO user (f_name, l_name, status, 
-		age) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO user (Fname, Lname, Admin, User_id, 
+		age, email) VALUES (?, ?, ?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($dbc, $query);
         
 		//status should be ? 
-        mysqli_stmt_bind_param($stmt, "sssi", $u_f_name, $u_l_name,
-                               $u_status, $u_age);
+        mysqli_stmt_bind_param($stmt, "ssisis", $Fname, $Lname,
+                               $Admin, $User_id, $u_age, $email);
         
         mysqli_stmt_execute($stmt);
         
@@ -108,25 +132,33 @@ if(isset($_POST['submit'])){
 
 ?>
 
-<!--where here ever server is located-->
+<!--where ever server is located-->
 <form action="localhost:8888/PHP/addUserInformation.php" method="post">
     
 <b>Add a New User</b>
     
 <p>First Name:
-<input type="text" name="f_name" size="30" value="" />
+<input type="text" name="Fname" size="30" value="" />
 </p>
 
 <p>Last Name:
-<input type="text" name="l_name" size="30" value="" />
+<input type="text" name="Lname" size="30" value="" />
 </p>
 
 <p>Status:
-<input type="text" name="status" size="10" value="" />
+<input type="text" name="Admin" size="1" value="" />
+</p>
+
+<p>User ID:
+<input type="text" name="User_id" size="8" value="" />
 </p>
 
 <p>Age:
 <input type="text" name="age" size="3" value="" />
+</p>
+
+<p>Email:
+<input type="text" name="email" size="30" value="" />
 </p>
 
 <p>

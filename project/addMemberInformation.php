@@ -9,52 +9,69 @@ if(isset($_POST['submit'])){
     
     $data_missing = array();
     
-    if(empty($_POST['member_name'])){
+    if(empty($_POST['Band_id'])){
 
         // Adds name to array
-        $data_missing[] = 'Member Name';
+        $data_missing[] = 'Band_id';
 
     } else {
 
         // Trim white space from the name and store the name
-        $mem_name = trim($_POST['member_name']);
+        $Band_id = trim($_POST['Band_id']);
 
     }
-
-    if(empty($_POST['years_active'])){
+	
+	if(empty($_POST['Fname'])){
 
         // Adds name to array
-        $data_missing[] = 'Years Active';
+        $data_missing[] = 'Fname';
 
     } else{
         
-		$mem_active_years = trim($_POST['years_active']);
+		$Fname = trim($_POST['Fname']);
 
     }
 
-    if(empty($_POST['position'])){
+    if(empty($_POST['Lname'])){
 
         // Adds name to array
-        $data_missing[] = 'Postion';
+        $data_missing[] = 'Lname';
 
-    } else {
-
-        // Trim white space from the name and store the name
-        $mem_position = trim($_POST['position']);
+    } else{
+        
+		$Lname = trim($_POST['Lname']);
 
     }
+
+    if(empty($_POST['Years_active'])){
+
+        // Adds name to array
+        $data_missing[] = 'Years_active';
+
+    } else{
+        
+		$Years_active = trim($_POST['Years_active']);
+
+    if(empty($_POST['Instrument'])){
+
+        // Adds name to array
+        $data_missing[] = 'Instrument';
+
+    } else{
+        
+		$Instrument = trim($_POST['Instrument']);
 
     if(empty($data_missing)){
         
         require_once('../mysqli_connect.php');
         
-        $query = "INSERT INTO member (member_name, years_active, 
-		position) VALUES (?, ?, ?)";
+        $query = "INSERT INTO bandmembers (Band_id, Fname, Lname, Years_active,
+		Instrument) VALUES (?, ?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($dbc, $query);
         
-        mysqli_stmt_bind_param($stmt, "sis", $mem_name,
-		$mem_active_years, $mem_position);
+        mysqli_stmt_bind_param($stmt, "sssis", $Band_id, $Fname, $Lname,
+								$Years_active, $Instrument);
         
         mysqli_stmt_execute($stmt);
         
@@ -95,21 +112,29 @@ if(isset($_POST['submit'])){
 
 ?>
 
-<!--where here ever server is located-->
+<!--where ever server is located-->
 <form action="localhost:8888/PHP/addMemberInformation.php" method="post">
     
-<b>Add a NEW Band Member</b>
-    
-<p>Band Member Name:
-<input type="text" name="member_name" size="30" value="" />
+<b>Add a NEW Member</b>
+
+<p>Band ID:
+<input type="text" name="Band_id" size="30" value="" />
 </p>
 
-<p>Year(s) as part of the band:
-<input type="text" name="years_active" size="4" value="" />
+<p>Band Member First Name:
+<input type="text" name="Fname" size="30" value="" />
 </p>
 
-<p>Position of the band:
-<input type="text" name="postion" size="30" value="" />
+<p>Band Member Last Name:
+<input type="text" name="Lname" size="30" value="" />
+</p>
+
+<p>Years active:
+<input type="text" name="Years_active" size="30" value="" />
+</p>
+
+<p>Instrument:
+<input type="text" name="Instrument" size="30" value="" />
 </p>
 
 <p>

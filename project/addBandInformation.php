@@ -9,39 +9,51 @@ if(isset($_POST['submit'])){
     
     $data_missing = array();
     
-    if(empty($_POST['band_name'])){
+    if(empty($_POST['Band_Name'])){
 
         // Adds name to array
-        $data_missing[] = 'Band name';
+        $data_missing[] = 'Band_Name';
 
     } else {
 
         // Trim white space from the name and store the name
-        $band_name = trim($_POST['band_name']);
+        $Band_Name = trim($_POST['Band_Name']);
 
-    }
+    } 
 
-    if(empty($_POST['date_formed'])){
+    if(empty($_POST['Band_id'])){
 
         // Adds name to array
-        $data_missing[] = 'Date formed';
+        $data_missing[] = 'Band_id';
+
+    } else {
+
+        // Trim white space from the name and store the name
+        $Band_id = trim($_POST['Band_id']);
+
+    }	
+	
+    if(empty($_POST['Formation_Date'])){
+
+        // Adds name to array
+        $data_missing[] = 'Formation_Date';
 
     } else{
         
 		// whatever variable for duration
-		$date_formed = trim($_POST['date_formed']);
+		$Formation_Date = trim($_POST['Formation_Date']);
 
     }
 
-    if(empty($_POST['date_breakup'])){
+    if(empty($_POST['Breakup_Date'])){
 
         // Adds name to array
-        $data_missing[] = 'Date Disband';
+        $data_missing[] = 'Breakup_Date';
 
     } else {
 
         // Trim white space from the name and store the name
-        $date_breakup = trim($_POST['date_breakup']);
+        $Breakup_Date = trim($_POST['Breakup_Date']);
 
     }
 
@@ -49,13 +61,13 @@ if(isset($_POST['submit'])){
         
         require_once('../mysqli_connect.php');
         
-        $query = "INSERT INTO band (band_name, date_formed,
-		date_breakup) VALUES (?, ?, ?)";
+        $query = "INSERT INTO band (Band_Name, Band_id, Formation_Date,
+		Breakup_Date) VALUES (?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($dbc, $query);
         
-        mysqli_stmt_bind_param($stmt, "sss", $band_name,
-                               $date_formed, $date_breakup);
+        mysqli_stmt_bind_param($stmt, "ssss", $Band_Name, $Band_id,
+                               $Formation_Date, $Breakup_Date);
         
         mysqli_stmt_execute($stmt);
         
@@ -102,15 +114,19 @@ if(isset($_POST['submit'])){
 <b>Add a NEW Band</b>
     
 <p>Band Name:
-<input type="text" name="b_name" size="30" value="" />
+<input type="text" name="Band_Name" size="30" value="" />
+</p>
+
+<p>Band Id:
+<input type="text" name="Band_id" size="5" value="" />
 </p>
 
 <p>Date formed:
-<input type="text" name="date_formed" size="4" value="" />
+<input type="text" name="Formation_Date" size="10" value="" />
 </p>
 
 <p>Disband Date:
-<input type="text" name="date_breakup" size="30" value="" />
+<input type="text" name="Breakup_Date" size="10" value="" />
 </p>
 
 <p>
