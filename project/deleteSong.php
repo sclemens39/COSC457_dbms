@@ -7,7 +7,7 @@
 DEFINE ('DB_USER', 'root');
 DEFINE ('DB_PASSWORD', 'root');
 DEFINE ('DB_HOST', 'localhost');
-DEFINE ('DB_NAME', 'dbms');
+DEFINE ('DB_NAME', 'db5');
 DEFINE ('DB_PORT', '8889');
 
 // $dbc will contain a resource link to the database
@@ -43,7 +43,7 @@ if(isset($_POST['delete'])) {
 </p>
 
 <p>
-<input type="delete" name="delete" value="Send" />
+<input type="submit" name="delete" value="Delete" />
 </p>
     
 </form>
