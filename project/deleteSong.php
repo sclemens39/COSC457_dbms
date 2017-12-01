@@ -33,7 +33,7 @@ if(isset($_POST['delete'])) {
 }
 ?>
 
-<!--where here ever server is located-->
+<!--where ever server is located-->
 <form action="localhost:8888/PHP/deleteSong.php" method="post">
     
 <b>Delete a song</b>
