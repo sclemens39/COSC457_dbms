@@ -5,12 +5,9 @@
 <body>
 <?php
 
-if(isset($_POST['submit'])){
-    
+if(isset($_POST['submit'])){    
     $data_missing = array();
-    
     if(empty($_POST['song_name'])){
-
         // Adds name to array
         $data_missing[] = 'Song Name';
 
