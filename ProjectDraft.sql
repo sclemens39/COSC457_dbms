@@ -88,7 +88,20 @@ create table AlbumTracks
     Album_id VARCHAR(32) NOT NULL,
     Song_id VARCHAR(32) NOT NULL
 );
-
+create table BandComments
+(
+    Band_id VARCHAR(32) NOT NULL,
+    User_id VARCHAR(32) NOT NULL,
+    Comment VARCHAR(128) NOT NULL,
+    Count_id INT NOT NULL
+);
+create table PerformanceComments
+(
+    Performance_id VARCHAR(32) NOT NULL,
+    User_id VARCHAR(32) NOT NULL,
+    Comment VARCHAR(128) NOT NULL,
+    Count_id INT NOT NULL
+);
 
 ---------------------- INSERTING INFO INTO USER ----------------------
 
@@ -461,3 +474,4 @@ INSERT INTO Setlist(Performance_id,Song_id)
     Values('p47321','s47324');
 INSERT INTO Setlist(Performance_id,Song_id)
     Values('p47321','s47325');
+    
