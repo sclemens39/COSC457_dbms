@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -19,29 +20,28 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
-
 </head>
 
 <body>
     <br>
     <div class = "container">
         <div class = "col-md-4 mx-auto">
-        <form>
+        <form method="post" action = "../helpers/checkLogin.php">
             <div class="form-group">
                 <label for="inputEmail">Email address</label>
-                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                <input required type="email" class="form-control" name = "email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We won't share</small>
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input required type="password" class="form-control" name = "password" id="password" placeholder="Password">
             </div>
             <div class="form-check">
                 <label class="form-check-label">
                     <input type="checkbox" class="form-check-input">Remember me
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" href>Submit</button>
         </form>
         </div>
     </div>
@@ -52,6 +52,9 @@
         </div>
     </footer>
 </body>
+<script>
+  
+</script>
 </html>
 
 

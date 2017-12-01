@@ -1,23 +1,22 @@
 <?php 
+session_start();
 include "../mysqli_connect.php";
-$query = "SELECT * FROM Album";
-mysqli_query($db, $query) or die('Error querying database.');
+$q = $db->prepare("SELECT * FROM Band LEFT JOIN FavoriteBands on Band.Band_id = FavoriteBands.Band_id Where User_id = ?");
+$q->bind_param("s", $_SESSION['user']['User_id']);
+$q->execute();
+$result = $q->get_result();
 
-$result = mysqli_query($db, $query);
-$albums = array();
-$row = mysqli_fetch_array($result);
-while ($row = mysqli_fetch_array($result)) {
-    $albums[] = $row;
-}
-$query = "SELECT * FROM Band";
-mysqli_query($db, $query) or die('Error querying database.');
+$favoriteBands = $result->fetch_array(MYSQLI_ASSOC);
 
-$result = mysqli_query($db, $query);
-$bands = array();
-$row = mysqli_fetch_array($result);
-while ($row = mysqli_fetch_array($result)) {
-    $bands[] = $row;
-}
+$q = $db->prepare("SELECT * FROM Performance 
+                    LEFT JOIN ShowsAttended on Performance.Performance_id = ShowsAttended.Performance_id
+                    Where User_id = ?");
+$q->bind_param("s", $_SESSION['user']['User_id']);
+$q->execute();
+$result = $q->get_result();
+
+$showsAttended = $result->fetch_array(MYSQLI_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +46,14 @@ while ($row = mysqli_fetch_array($result)) {
     <div id ="navBar"></div>
 
     <div class="container">
-            
+            <?print_r( $_SESSION['user'])?>
+            <p> <? echo $favoriteBands['Band_Name'] ?></p>
+            <p> <? echo $showsAttended['Venue_id'] ?></p>
+
+            <?foreach($favoriteBands as $row) {?>
+            <?}?>
+            <?foreach($showsAttended as $row) {?>
+            <?}?>
     </div>
 
     

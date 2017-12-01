@@ -1,5 +1,6 @@
 <?php 
 include "../mysqli_connect.php";
+session_start();
 
 ?>
 
@@ -30,7 +31,10 @@ include "../mysqli_connect.php";
     <div id ="navBar"></div>
 
     <div class= "jumbotron">
-        
+        <p><?echo $_SESSION['user']['Fname']?>&nbsp;<?echo $_SESSION['user']['Lname']?></p>
+        <p><?echo $_SESSION['user']['Age']?></p>
+        <p><?echo $_SESSION['user']['Email']?></p>
+	    <a href="../helpers/logout.php">Log out</a>
     </div>
 
     

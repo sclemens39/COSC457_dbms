@@ -13,7 +13,10 @@ DEFINE ('DB_NAME', 'music');
 
 // $db will contain a resource link to the database
 // @ keeps the error from showing in the browser
-
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+ini_set('log_errors',1);
 $db = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
 OR die('Could not connect to MySQL: ' .
 mysqli_connect_error());
