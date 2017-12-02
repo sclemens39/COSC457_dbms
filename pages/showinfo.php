@@ -78,7 +78,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                         <? echo $show['Name']?>
                                 </h3>
                                 <p>
-                                    <? echo $show['Performance_date']?>
+                                    Date: <? echo $show['Performance_date']?>
                                 </p>
                                  <a href="../helpers/attendShow.php?id=<?echo $show['Performance_id']?>"class="btn btn-warning">I was here!</a>
 
@@ -97,7 +97,12 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             <div class="col-md-4 mx-auto">
                 <h3>Venue Info</h3>
                 <p>
-                    <? echo $show['Name']?>
+                    Name: <? echo $show['Name']?>
+                </p>
+                <p>
+                    Years of operation: <? echo $show['Date_opened']?> -
+                        <? if (!empty($band['Date_closed'])){echo $band['Date_closed'];}
+                                        else {echo "Current";}?>
                 </p>
                 <p>
                     <? echo $show['Address']?>
@@ -105,10 +110,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                         <? echo $show['City']?>,
                             <? echo $show['State']?>
                 </p>
-                <p>
-                    <? echo $show['Date_opened']?> -
-                        <? echo $show['Date_closed']?>
-                </p>
+                
             </div>
             <div class="col-md-4 mx-auto">
                 <h3>Setlist</h3>

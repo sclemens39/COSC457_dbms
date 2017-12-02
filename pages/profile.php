@@ -65,6 +65,12 @@ session_start();
                                         <li>
                                             <a href="../helpers/logout.php">Logout</a>
                                         </li>
+                                        <li>
+                                            <hr>
+                                        </li>
+                                        <li>
+                                            <a href="../helpers/deleteUser.php" onclick="return confirm('Are you sure?');">Delete Account</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

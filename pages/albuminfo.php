@@ -61,10 +61,10 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                     <? echo $album['Band_Name']?>
                                 </p>
                                 <p>
-                                    <? echo $album['Year_Released']?>
+                                   Released: <? echo $album['Year_Released']?>
                                 </p>
                                 <p>
-                                    <? echo $album['Record_Label']?>
+                                   Label: <? echo $album['Record_Label']?>
                                 </p>
                                  <a href="../pages/artistinfo.php?id=<?echo $album['Band_id']?>"class="btn btn-info">See Artist</a>
                             </div>

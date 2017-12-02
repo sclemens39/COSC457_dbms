@@ -82,7 +82,8 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                 </h3>
                                 <p>
                                     <? echo $band['Formation_Date']?> -
-                                        <? echo $band['Breakup_Date']?>
+                                        <? if (!empty($band['Breakup_Date'])){echo $band['Breakup_Date'];}
+                                        else {echo "Current";}?>
                                 </p>
 
                                 <a href="../helpers/favoriteBand.php?id=<?echo $band['Band_id']?>"class="btn btn-warning">Favorite this band</a>

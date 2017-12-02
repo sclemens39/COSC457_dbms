@@ -68,28 +68,36 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 <br>
             </div>
 
-            <div class="col-md-4 mx-auto">
+            <div class="col-md-6 mx-auto text-center">
                 <h3> Favorite Bands </h3>
-                <? foreach($favoriteBands as $row) {?>
+                 <? if (!empty($favoriteBands)){ 
+                    foreach($favoriteBands as $row) {?>
                     <a href="../pages/artistinfo.php?id=<?echo $row['Band_id']?>">
                     <p>
                         <? echo $row['Band_Name'] ?>
+                        <a class="btn btn-sm btn-danger" href="../helpers/deleteFav.php?id=<?echo $row['Band_id']?>">X</a>
                     </p>
-                </a>
-                    <?}?>
-            </div>
-            <div class="col-md-4 mx-auto">
-                <h3> Shows Attended </h3>
+                    </a>
+                    
 
-                <? foreach($showsAttended as $row) {?>
+                    <?} ?>
+                    <?}else{ echo "None yet";}?>
+            </div>
+            <div class="col-md-6 mx-auto text-center">
+                <h3> Shows Attended </h3>
+                    <? if (!empty($showsAttended)){ 
+                    foreach($showsAttended as $row) {?>
                     <a href="../pages/showinfo.php?id=<?echo $row['Performance_id']?>">
                     <p>
                         <? echo $row['Name'] ?> -
                             <? echo $row['Band_Name'] ?> on
                                 <? echo $row['Performance_date']?>
+                        <a class="btn btn-sm btn-danger" href="../helpers/deleteAttend.php?id=<?echo $row['Performance_id']?>">X</a>
+
                     </p>
                     </a>
                     <?}?>
+                    <?}else{ echo "None yet";}?>
             </div>
         </div>
     </div>
