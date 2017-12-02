@@ -85,7 +85,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                         <? echo $band['Breakup_Date']?>
                                 </p>
 
-                                <a type="button" href="../helpers/favoriteBand.php?id=<?echo $band['Band_id']?>"class="btn btn-warning">Favorite this band</a>
+                                <a href="../helpers/favoriteBand.php?id=<?echo $band['Band_id']?>"class="btn btn-warning">Favorite this band</a>
 
                             </div>
                         </div>

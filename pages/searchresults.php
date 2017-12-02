@@ -54,8 +54,8 @@ $song = $result->fetch_array(MYSQLI_ASSOC);
                                     Album: <? echo $song['Album']?>
                                     <br>
                                     <br>
-                                    <a type="button" href="../pages/artistinfo.php?id=<?echo $song['Band_id']?>"class="btn btn-info">See Artist</a>
-                                    <a type="button" href="../pages/albuminfo.php?id=<?echo $song['Album_id']?>"class="btn btn-info">See Album</a>
+                                    <a href="../pages/artistinfo.php?id=<?echo $song['Band_id']?>"class="btn btn-info">See Artist</a>
+                                    <a href="../pages/albuminfo.php?id=<?echo $song['Album_id']?>"class="btn btn-info">See Album</a>
                                 <?} else{ echo "No results";}?>
                                 </p>
                                  

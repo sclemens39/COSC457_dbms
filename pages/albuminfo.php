@@ -66,7 +66,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                 <p>
                                     <? echo $album['Record_Label']?>
                                 </p>
-                                 <a type="button" href="../pages/artistinfo.php?id=<?echo $album['Band_id']?>"class="btn btn-info">See Artist</a>
+                                 <a href="../pages/artistinfo.php?id=<?echo $album['Band_id']?>"class="btn btn-info">See Artist</a>
                             </div>
                         </div>
                     </div>

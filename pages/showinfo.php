@@ -80,7 +80,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                 <p>
                                     <? echo $show['Performance_date']?>
                                 </p>
-                                 <a type="button" href="../helpers/attendShow.php?id=<?echo $show['Performance_id']?>"class="btn btn-warning">I was here!</a>
+                                 <a href="../helpers/attendShow.php?id=<?echo $show['Performance_id']?>"class="btn btn-warning">I was here!</a>
 
                             </div>
                         </div>
