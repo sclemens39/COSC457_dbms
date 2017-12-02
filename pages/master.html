@@ -20,14 +20,14 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="albums.php">Albums</a>
                         <a class="dropdown-item" href="artists.php">Artists</a>
-                        <a class="dropdown-item" href="venues.php">Venues</a>
+                        <a class="dropdown-item" href="shows.php">Shows</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="profile.php">Profile</a>
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search for songs" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="../helpers/searcher.php">
+                <input class="form-control mr-sm-2" type="search" name="search"placeholder="Search for songs" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>

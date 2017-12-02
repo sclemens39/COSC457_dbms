@@ -1,32 +1,39 @@
 <?php 
 session_start();
 include "../mysqli_connect.php";
-$q = $db->prepare("SELECT * FROM Band LEFT JOIN FavoriteBands on Band.Band_id = FavoriteBands.Band_id Where User_id = ?");
-$q->bind_param("s", $_SESSION['user']['User_id']);
+
+$q = $db->prepare("SELECT * FROM Performance
+        LEFT JOIN Venue on Performance.Venue_id = Venue.Venue_id 
+        LEFT JOIN Band on Performance.Band_id = Band.Band_id 
+        Where Performance_id = ?");
+$q->bind_param("s", $_GET["id"]);
+$q->execute();
+$result = $q->get_result();
+$show = $result->fetch_array(MYSQLI_ASSOC);
+
+
+$q = $db->prepare("SELECT * FROM Setlist 
+        LEFT JOIN Song on Setlist.Song_id = Song.Song_id 
+        Where Performance_id = ?");
+$q->bind_param("s", $_GET["id"]);
 $q->execute();
 $result = $q->get_result();
 
-$favoriteBands = [];
+$songs =[];
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-		array_push($favoriteBands, $row);
+				array_push($songs, $row);
 }
-
-$q = $db->prepare("SELECT * FROM Performance 
-                    LEFT JOIN ShowsAttended 
-                    on Performance.Performance_id = ShowsAttended.Performance_id
-                    LEFT JOIN Band
-                    on Performance.Band_id = Band.Band_id
-                    LEFT JOIN Venue
-                    on Performance.Venue_id = Venue.Venue_id
-                    Where User_id = ?");
-$q->bind_param("s", $_SESSION['user']['User_id']);
+ 
+$q = $db->prepare("SELECT * FROM PerformanceComments Where Performance_id = ?");
+$q->bind_param("s", $_GET["id"]);
 $q->execute();
 $result = $q->get_result();
 
-$showsAttended =[];
+$comments =[];
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-				array_push($showsAttended, $row);
+				array_push($comments, $row);
 }
+        
 
 ?>
 
@@ -57,21 +64,24 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
     <div id ="navBar"></div>
 
     <div class="container">
-            <h3> Favorite Bands </h3>
-            <? foreach($favoriteBands as $row) {?>
-                <p> <? echo $row['Band_Name'] ?></p>
+           <p><? echo $show['Band_Name']?> </p>
+           <p><? echo $show['Performance_date']?> </p>
+           <p><? echo $show['Duration']?> </p>
+           <p><? echo $show['Name']?> </p>
+           <p><? echo $show['Address']?> </p>
+           <p><? echo $show['City']?> </p>
+           <p><? echo $show['State']?> </p>
+           <p><? echo $show['Date_opened']?> </p>
+           <p><? echo $show['Date_closed']?> </p>
+           <? foreach($songs as $song) {?></p>
+                <p><? echo $song['Name']?> </p>
             <?}?>
-            <hr>
-            <h3> Shows Attended </h3>
+            <a href="">I attended this!</a>
 
-            <? foreach($showsAttended as $row) {?>
-                <p> <? echo $row['Name'] ?> - <? echo $row['Band_Name'] ?> on <? echo $row['Performance_date']?></p>
-            <?}?>
-            
     </div>
 
     
-    <footer class="footer text-muted">
+    <footer class="text-muted">
         <div class="container text-center">
             <p>This is a footer</p>
         </div>

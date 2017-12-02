@@ -1,15 +1,16 @@
 <?php 
+session_start();
 include "../mysqli_connect.php";
-$query = "SELECT * FROM Venue";
-mysqli_query($db, $query) or die('Error querying database.');
 
-$result = mysqli_query($db, $query);
-$venues = array();
-$row = mysqli_fetch_array($result);
-while ($row = mysqli_fetch_array($result)) {
-    $venues[] = $row;
-}
+$q = $db->prepare("SELECT * FROM Song Where Song_id = ?");
+$q->bind_param("s", $_GET["id"]);
+$q->execute();
+$result = $q->get_result();
+
+$song = $result->fetch_array(MYSQLI_ASSOC);
+
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,27 +34,14 @@ while ($row = mysqli_fetch_array($result)) {
 </head>
 
 <body>
+
     <div id ="navBar"></div>
 
-   <div class="venue text-muted">
-        <div class="container">
-            <h3 class="text-center">Venues</h3>
-            <div class="row">
-                <?
-                    foreach($venues as $row) {?>
-                        <div class="card">
-                        <a href="venueinfo.php?id=<?php echo $row["Venue_id"] ?>">	
-                                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                                <p class="card-text">
-                                    <? echo $row['Name']?>
-                                </p>
-                            </a>
-                        </div>		
-			 	<? }?>   
-            </div>
-        </div>
+    <div class="container">
+          No results
     </div>
 
+    
     <footer class="text-muted">
         <div class="container text-center">
             <p>This is a footer</p>
@@ -65,5 +53,4 @@ $(function() {
     $('#navBar').load('master.html');
 });
 </script>
-
 </html>

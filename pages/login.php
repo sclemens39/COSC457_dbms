@@ -26,6 +26,7 @@
     <br>
     <div class = "container">
         <div class = "col-md-4 mx-auto">
+        <h3>Login</h3>
         <form method="post" action = "../helpers/checkLogin.php">
             <div class="form-group">
                 <label for="inputEmail">Email address</label>
@@ -41,7 +42,7 @@
                     <input type="checkbox" class="form-check-input">Remember me
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary" href>Submit</button>
+            <button type="submit" class="btn btn-success">Login</button>
         </form>
         </div>
     </div>

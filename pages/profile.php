@@ -6,7 +6,8 @@ session_start();
 
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -28,16 +29,52 @@ session_start();
 
 <body>
 
-    <div id ="navBar"></div>
+    <div id="navBar"></div>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12 card border-success" style="">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="holder.js/200x200?/thumb" alt="" class="" />
+                            </div>
+                            <div class="col-md-7">
+                                <h3>
+                                    <?echo $_SESSION['user']['Fname']?>
+                                        <?echo $_SESSION['user']['Lname']?>
+                                </h3>
+                                <p>
+                                    <i class=""></i>Email:
+                                    <?echo $_SESSION['user']['Email']?>
+                                        <br />
+                                        <i class=""></i>Age:
+                                        <?echo $_SESSION['user']['Age']?>
+                                            <br />
 
-    <div class= "jumbotron">
-        <p><?echo $_SESSION['user']['Fname']?>&nbsp;<?echo $_SESSION['user']['Lname']?></p>
-        <p><?echo $_SESSION['user']['Age']?></p>
-        <p><?echo $_SESSION['user']['Email']?></p>
-	    <a href="../helpers/logout.php">Log out</a>
+                                </p>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Actions
+                                        <span class="caret"></span>
+                                        <span class="sr-only"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="../pages/home.php">Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a href="../helpers/logout.php">Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    
     <footer class="text-muted">
         <div class="container text-center">
             <p>This is a footer</p>
@@ -45,8 +82,9 @@ session_start();
     </footer>
 </body>
 <script>
-$(function() {
-    $('#navBar').load('master.html');
-});
+    $(function () {
+        $('#navBar').load('master.html');
+    });
 </script>
+
 </html>

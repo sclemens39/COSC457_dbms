@@ -1,35 +1,19 @@
 <?php 
-session_start();
 include "../mysqli_connect.php";
-$q = $db->prepare("SELECT * FROM Band LEFT JOIN FavoriteBands on Band.Band_id = FavoriteBands.Band_id Where User_id = ?");
-$q->bind_param("s", $_SESSION['user']['User_id']);
-$q->execute();
-$result = $q->get_result();
-
-$favoriteBands = [];
-while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-		array_push($favoriteBands, $row);
-}
-
-$q = $db->prepare("SELECT * FROM Performance 
-                    LEFT JOIN ShowsAttended 
-                    on Performance.Performance_id = ShowsAttended.Performance_id
+$query = "SELECT * FROM Performance 
                     LEFT JOIN Band
                     on Performance.Band_id = Band.Band_id
                     LEFT JOIN Venue
-                    on Performance.Venue_id = Venue.Venue_id
-                    Where User_id = ?");
-$q->bind_param("s", $_SESSION['user']['User_id']);
-$q->execute();
-$result = $q->get_result();
+                    on Performance.Venue_id = Venue.Venue_id";
+mysqli_query($db, $query) or die('Error querying database.');
 
-$showsAttended =[];
-while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-				array_push($showsAttended, $row);
+$result = mysqli_query($db, $query);
+$shows = array();
+$row = mysqli_fetch_array($result);
+while ($row = mysqli_fetch_array($result)) {
+    $shows[] = $row;
 }
-
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,25 +37,28 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 </head>
 
 <body>
-
     <div id ="navBar"></div>
 
-    <div class="container">
-            <h3> Favorite Bands </h3>
-            <? foreach($favoriteBands as $row) {?>
-                <p> <? echo $row['Band_Name'] ?></p>
-            <?}?>
-            <hr>
-            <h3> Shows Attended </h3>
-
-            <? foreach($showsAttended as $row) {?>
-                <p> <? echo $row['Name'] ?> - <? echo $row['Band_Name'] ?> on <? echo $row['Performance_date']?></p>
-            <?}?>
-            
+   <div class="venue text-muted">
+        <div class="container">
+            <h3 class="text-center">Shows</h3>
+            <div class="row">
+                <?
+                    foreach($shows as $row) {?>
+                        <div class="card">
+                        <a href="showinfo.php?id=<?php echo $row["Performance_id"] ?>">	
+                                <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                                <p class="card-text">
+                                    <? echo $row['Band_Name'] ?>- <? echo $row['Name']?>
+                                </p>
+                            </a>
+                        </div>		
+			 	<? }?>   
+            </div>
+        </div>
     </div>
 
-    
-    <footer class="footer text-muted">
+    <footer class="text-muted">
         <div class="container text-center">
             <p>This is a footer</p>
         </div>
@@ -82,4 +69,5 @@ $(function() {
     $('#navBar').load('master.html');
 });
 </script>
+
 </html>

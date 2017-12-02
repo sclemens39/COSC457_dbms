@@ -23,7 +23,35 @@
 <body>
     
     <br>
-    <div class="container">
+    <div class = "container">
+        <div class = "col-md-4 mx-auto">
+        <h3>Register</h3>
+        <form method="post" action = "../helpers/registerUser.php">
+            <div class="form-group">
+                <label for="inputFirst">First name</label>
+                <input required type="text" class="form-control" name = "first" id="first" placeholder="Enter first name">
+            </div>
+            <div class="form-group">
+                <label for="inputLast">Last name</label>
+                <input required type="text" class="form-control" name = "last" id="last" placeholder="Enter last name">
+            </div>
+            <div class="form-group">
+                <label for="inputAge">Age</label>
+                <input required type="number" class="form-control" name = "age" id="age" min="18" max="99" placeholder="18">
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input required type="email" class="form-control" name = "email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We won't share</small>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input required type="password" class="form-control" name = "password" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        </div>
     </div>
 
     <footer class="text-muted">

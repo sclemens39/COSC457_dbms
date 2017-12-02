@@ -2,21 +2,14 @@
 include "../mysqli_connect.php";
 require '../vendor/autoload.php';
 
-$query = "SELECT * FROM Album";
+$query = "SELECT Album_name, Album_id, Album.Band_id, Band_Name FROM Album
+          LEFT JOIN Band on Album.Band_id = Band.Band_id";
 mysqli_query($db, $query) or die('Error querying database.');
 
 $result = mysqli_query($db, $query);
 $albums = array();
 while ($row = mysqli_fetch_array($result)) {
     $albums[] = $row;
-}
-$query = "SELECT * FROM Band";
-mysqli_query($db, $query) or die('Error querying database.');
-
-$result = mysqli_query($db, $query);
-$bands = array();
-while ($row = mysqli_fetch_array($result)) {
-    $bands[] = $row;
 }
 ?>
 
@@ -50,13 +43,12 @@ while ($row = mysqli_fetch_array($result)) {
         <div class="container">
             <h3 class="text-center">Albums</h3>
             <div class="row">
-                <?
-                    foreach($albums as $row) {?>
+                <? foreach($albums as $row) {?>
                         <div class="card">
-                        <a href="albuminfo.php?id=<?php echo $row["Album_id"] ?>">	
+                        <a href="albuminfo.php?id=<?php echo $row["Album_id"]?>">	
                                 <img data-src="holder.js/100px280/thumb" alt="Card image cap">
                                 <p class="card-text">
-                                    <? echo $row['Album_name']?>
+                                    <? echo $row['Album_name']?> - <? echo $row['Band_Name']?>
                                 </p>
                             </a>
                         </div>		
