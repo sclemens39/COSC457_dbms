@@ -32,7 +32,8 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -54,32 +55,55 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 
 <body>
 
-    <div id ="navBar"></div>
+    <div id="navBar"></div>
 
-    <div class="container">
-            <h3> Favorite Bands </h3>
-            <? foreach($favoriteBands as $row) {?>
-                <p> <? echo $row['Band_Name'] ?></p>
-            <?}?>
-            <hr>
-            <h3> Shows Attended </h3>
+    <div class="container" style="margin-top:100px;">
+        <div class="row">
+            <div class="col-md-12 mx-auto text-center">
+                <h1> Hello
+                    <? echo $_SESSION['user']['Fname']?>!</h1>
+                <h3> Welcome to your dashboard</h3>
+                <br>
+                <hr>
+                <br>
+            </div>
 
-            <? foreach($showsAttended as $row) {?>
-                <p> <? echo $row['Name'] ?> - <? echo $row['Band_Name'] ?> on <? echo $row['Performance_date']?></p>
-            <?}?>
-            
+            <div class="col-md-4 mx-auto">
+                <h3> Favorite Bands </h3>
+                <? foreach($favoriteBands as $row) {?>
+                    <a href="../pages/artistinfo.php?id=<?echo $row['Band_id']?>">
+                    <p>
+                        <? echo $row['Band_Name'] ?>
+                    </p>
+                </a>
+                    <?}?>
+            </div>
+            <div class="col-md-4 mx-auto">
+                <h3> Shows Attended </h3>
+
+                <? foreach($showsAttended as $row) {?>
+                    <a href="../pages/showinfo.php?id=<?echo $row['Performance_id']?>">
+                    <p>
+                        <? echo $row['Name'] ?> -
+                            <? echo $row['Band_Name'] ?> on
+                                <? echo $row['Performance_date']?>
+                    </p>
+                    </a>
+                    <?}?>
+            </div>
+        </div>
     </div>
 
-    
     <footer class="footer text-muted">
         <div class="container text-center">
-            <p>This is a footer</p>
+            <p>2017</p>
         </div>
     </footer>
 </body>
 <script>
-$(function() {
-    $('#navBar').load('master.html');
-});
+    $(function () {
+        $('#navBar').load('master.html');
+    });
 </script>
+
 </html>

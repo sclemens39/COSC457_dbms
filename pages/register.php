@@ -24,7 +24,7 @@
     
     <br>
     <div class = "container">
-        <div class = "col-md-4 mx-auto">
+        <div class = "col-md-4 mx-auto" style="margin-top:100px;">
         <h3>Register</h3>
         <form method="post" action = "../helpers/registerUser.php">
             <div class="form-group">

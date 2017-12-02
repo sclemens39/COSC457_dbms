@@ -22,8 +22,8 @@
 
 <body>
 
-    <section class="jumbotron text-center">
-        <div class="container">
+    <section class="jumbotron splash text-center">
+        <div class="container splashContent">
             <h1 class="jumbotron-heading">Welcome to "Music App"</h1>
             <p class="lead text-muted">Your one stop shop for anything relating to your favorite bands and artists!</p>
             <p>
@@ -36,7 +36,7 @@
     
     <footer class="text-muted">
         <div class="container text-center">
-            <p>This is a footer</p>
+            <p>2017</p>
         </div>
     </footer>
 </body>

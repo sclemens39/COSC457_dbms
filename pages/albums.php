@@ -59,7 +59,7 @@ while ($row = mysqli_fetch_array($result)) {
 
     <footer class="text-muted">
         <div class="container text-center">
-            <p>This is a footer</p>
+            <p>2017</p>
         </div>
     </footer>
 </body>

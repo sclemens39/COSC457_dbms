@@ -25,7 +25,7 @@
 <body>
     <br>
     <div class = "container">
-        <div class = "col-md-4 mx-auto">
+        <div class = "col-md-4 mx-auto" style="margin-top:100px;">
         <h3>Login</h3>
         <form method="post" action = "../helpers/checkLogin.php">
             <div class="form-group">
@@ -49,7 +49,7 @@
 
     <footer class="text-muted">
         <div class="container text-center">
-            <p>This is a footer</p>
+            <p>2017</p>
         </div>
     </footer>
 </body>

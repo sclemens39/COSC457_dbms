@@ -1,6 +1,6 @@
 body {
    /* Margin bottom by footer height */
-   margin-bottom: 125px;
+   padding-bottom: 125px;
 }
 html {
     position: relative;
@@ -26,9 +26,6 @@ html {
     font-weight: 300;
 }
 
-.jumbotron .container {
-    max-width: 40rem;
-}
 
 .album {
     min-height: 50rem;
@@ -77,4 +74,13 @@ footer {
 }
 footer p {
     margin-top:50px;
+}
+.splash{
+    height: 100vh;
+}
+.splashContent {
+    position: relative;
+    display: inline-block;
+    top: 30%;
+    transform: translateY(-30%);
 }

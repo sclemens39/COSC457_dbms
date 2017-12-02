@@ -16,7 +16,7 @@ array_push($members,$band);
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 array_push($members, $row);
 }
-$q = $db->prepare("SELECT * FROM BandComments Where Band_id = ?");
+$q = $db->prepare("SELECT * FROM BandComments LEFT JOIN User on BandComments.User_id = User.User_id Where Band_id = ?");
 $q->bind_param("s", $_GET["id"]);
 $q->execute();
 $result = $q->get_result();
@@ -40,7 +40,8 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 
 ?>
 <html>
-    <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -62,34 +63,125 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 
 <body>
 
-    <div id ="navBar"></div>
+    <div id="navBar"></div>
 
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12 card border-success" style="">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="holder.js/200x200?/thumb" alt="" class="" />
+                            </div>
+                            <div class="col-md-7">
+                                <h3>
+                                    <p>
+                                        <? echo $band['Band_Name']?>
+                                    </p>
+                                </h3>
+                                <p>
+                                    <? echo $band['Formation_Date']?> -
+                                        <? echo $band['Breakup_Date']?>
+                                </p>
+
+                                <a type="button" href="../helpers/favoriteBand.php?id=<?echo $band['Band_id']?>"class="btn btn-warning">Favorite this band</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
-           <p><? echo $band['Band_Name']?> </p>
-           <p><? echo $band['Formation_Date']?> </p>
-           <p><? echo $band['Breakup_Date']?> </p>
-           <? foreach($albums as $album) {?></p>
-                <p><? echo $album['Album_name']?> </p>
-            <?}?>
-            <? foreach($members as $mem) {?></p>
-                <p><? echo $mem['Member_fname']?> </p>
-                <p><? echo $mem['Member_lname']?> </p>
-                <p><? echo $mem['Instrument']?> </p>
-                <p><? echo $mem['Years_active']?> </p>
-            <?}?>
-           <a href="">Favorite Band</a>
+        <div class="row">
+
+
+            <div class="col-md-4 mx-auto">
+                <h3>Band Members</h3>
+                <? foreach($members as $mem) {?>
+                    <p>
+                        <? echo $mem['Member_fname']?>
+                            <? echo $mem['Member_lname']?>
+                    </p>
+                    <p>Instrument:
+                        <? echo $mem['Instrument']?>
+                    </p>
+                    <p>Years active:
+                        <? echo $mem['Years_active']?>
+                    </p>
+                    <hr>
+                    <?}?>
+            </div>
+            <div class="col-md-4 mx-auto">
+                <h3>Albums</h3>
+                <? foreach($albums as $album) {?>
+                    <div class="row"> 
+                        <a href="../pages/albuminfo.php?id=<?echo $album['Album_id']?>">
+                        <img src="holder.js/100x100?/thumb" style="margin-right: 30px;margin-bottom: 30px;" /> 
+                        <? echo $album['Album_name']?>
+                        </a>
+                    </div>
+                    <?}?>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12 card" style="">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-7 mx-auto">
+                                <h3>Comments</h3>
+                                <hr>
+                                <? if (!empty($comments)) { ?>
+                                    <? foreach($comments as $row) {?>
+                                        <p><? echo $row['Comment'] ?></p>
+                                        <small class=" text-muted">- <? echo $row['Fname']?></small>
+                                        <hr>
+                                    <? } ?>
+                                <? } else { echo "None yet. Be the first!" ?>
+                                    <hr>
+                                <?}?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mx-auto col-md-12 card border-info" style="">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-7 mx-auto">
+                                <form method="post" action = "../helpers/bandComment.php?id=<?echo $band['Band_id']?>">
+                                    <div class="form-group">
+                                        <label for="inputEmail">Comment</label>
+                                        <small id="commentHelp" class="form-text text-muted">Enter your thoughts below</small>
+                                        <textarea required rows="5" class="form-control" name = "comment" id="comment" aria-describedby="commentHelp" placeholder="..."></textarea>
+                                        
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Post</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    
     <footer class="text-muted">
         <div class="container text-center">
-            <p>This is a footer</p>
+            <p>2017</p>
         </div>
     </footer>
 </body>
 <script>
-$(function() {
-    $('#navBar').load('master.html');
-});
+    $(function () {
+        $('#navBar').load('master.html');
+    });
 </script>
+
 </html>

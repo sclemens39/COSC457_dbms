@@ -77,7 +77,7 @@ session_start();
 
     <footer class="text-muted">
         <div class="container text-center">
-            <p>This is a footer</p>
+            <p>2017</p>
         </div>
     </footer>
 </body>
