@@ -62,7 +62,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             <div class="col-md-12 mx-auto text-center">
                 <h1> Hello
                     <? echo $_SESSION['user']['Fname']?>!</h1>
-                <h3> Welcome to your dashboard</h3>
+                <h3>Welcome to your dashboard.</h3>
                 <br>
                 <hr>
                 <br>

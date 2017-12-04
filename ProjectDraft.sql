@@ -16,7 +16,7 @@ create table Band
 );
 create table Album
 (
-    Album VARCHAR(32) NOT NULL,
+    Album_name VARCHAR(32) NOT NULL,
     Band_id VARCHAR(32) NOT NULL,
     Year_Released INT NOT NULL,
     Record_Label VARCHAR(32) NOT NULL,
@@ -282,47 +282,343 @@ INSERT INTO Song
 Values('Her Majesty', '00:00:23', 1969, 'b4732', 'Abbey Road', 's437217');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
-Values('Let It Be', '00:04:03', 1970, 'b4732' , 'Let It Be', 's437223');
+Values('Two of Us', '00:03:36', 1970, 'b4732', 'Let It Be', 's437218');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Dig a Pony', '00:03:54', 1970, 'b4732', 'Let It Be', 's437219');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Across the Universe', '00:03:47', 1970, 'b4732', 'Let It Be', 's437220');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('I Me Mine', '00:02:26', 1970, 'b4732', 'Let It Be', 's437221');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Dig It', '00:00:50', 1970, 'b4732', 'Let It Be', 's437222');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Let It Be', '00:04:03', 1970, 'b4732', 'Let It Be', 's437223');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Maggie Mae', '00:00:40', 1970, 'b4732', 'Let It Be', 's437224');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Ive Got a Feeling', '00:03:37', 1970, 'b4732', 'Let It Be', 's437225');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('One After 909', '00:02:53', 1970, 'b4732', 'Let It Be', 's437226');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('The Long and Winding Road', '00:03:38', 1970, 'b4732', 'Let It Be', 's437227');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('For You Blue', '00:02:32', 1970, 'b4732', 'Let It Be', 's437228');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Get Back', '00:03:07', 1970, 'b4732', 'Let It Be', 's437229');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
 Values('Neon Lights', '00:03:53', 1980, 'b3850', 'Heaven and Hell', 's38501');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Children of the Sea', '00:05:35', 1980, 'b3850', 'Heaven and Hell', 's38502');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Lady Evil', '00:04:24', 1980, 'b3850', 'Heaven and Hell', 's38503');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Heaven and Hell', '00:06:57', 1980, 'b3850', 'Heaven and Hell', 's38504');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Wishing Well', '00:04:08', 1980, 'b3850', 'Heaven and Hell', 's38505');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Die Young', '00:04:45', 1980, 'b3850', 'Heaven and Hell', 's38506');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Walk Away', '00:04:25', 1980, 'b3850', 'Heaven and Hell', 's38507');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Lonely Is the World', '00:05:46', 1980, 'b3850', 'Heaven and Hell', 's38508');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Custard Pie', '00:04:14', 1975, 'b4654', 'Physical Graffiti', 's46541');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
 Values('The Rover', '00:05:37', 1975, 'b4654', 'Physical Graffiti', 's46542');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
-Values('Were Gonna Grove', '00:02:38', 1982, 'b4654', 'Coda', 's465416');
+Values('In My Time of Dying', '00:11:06', 1975, 'b4654', 'Physical Graffiti', 's46543');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Houses of the Holy', '00:04:03', 1975, 'b4654', 'Physical Graffiti', 's46544');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Trampled Under Foot', '00:05:36', 1975, 'b4654', 'Physical Graffiti', 's46545');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Kashmir', '00:08:29', 1975, 'b4654', 'Physical Graffiti', 's46546');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('In the Light', '00:08:47', 1975, 'b4654', 'Physical Graffiti', 's46547');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Bron-Yr-Aur', '00:02:06', 1975, 'b4654', 'Physical Graffiti', 's46548');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Down by the Seaside', '00:05:16', 1975, 'b4654', 'Physical Graffiti', 's46549');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Ten Years Gone', '00:06:33', 1975, 'b4654', 'Physical Graffiti', 's465410');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Night Flight', '00:03:38', 1975, 'b4654', 'Physical Graffiti', 's465411');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('The Wanton Song', '00:04:10', 1975, 'b4654', 'Physical Graffiti', 's465412');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Boogie With Stu', '00:03:53', 1975, 'b4654', 'Physical Graffiti', 's465413');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Black Country Woman', '00:04:33', 1975, 'b4654', 'Physical Graffiti', 's465414');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Sick Again', '00:04:43', 1975, 'b4654', 'Physical Graffiti', 's465415');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Wearing and Tearing', '00:02:28', 1982, 'b4654', 'Coda', 's465416');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Were Gonna Grove', '00:03:03', 1982, 'b4654', 'Coda', 's465417');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Poor Tom', '00:04:18', 1982, 'b4654', 'Coda', 's465418');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('I Cant Quit You Baby', '00:04:31', 1982, 'b4654', 'Coda', 's465419');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Walters Walk', '00:03:36', 1982, 'b4654', 'Coda', 's465420');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Ozone Baby', '00:05:07', 1982, 'b4654', 'Coda', 's465421');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Darlene', '00:04:19', 1982, 'b4654', 'Coda', 's465422');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Bonzos Monteaux', '00:05:29', 1982, 'b4654', 'Coda', 's465423');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Brown Sugar', '00:03:50', 1971, 'b1028', 'Sticky Fingers', 's10281');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
 Values('Sway', '00:03:53', 1971, 'b1028', 'Sticky Fingers', 's10282');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Wild Horses', '00:05:43', 1971, 'b1028', 'Sticky Fingers', 's10283');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Cant You Hear Me Knocking', '00:07:16', 1971, 'b1028', 'Sticky Fingers', 's10284');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('You Gotta Move', '00:02:33', 1971, 'b1028', 'Sticky Fingers', 's10285');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Bitch', '00:03:38', 1971, 'b1028', 'Sticky Fingers', 's10286');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('I Got the Blues', '00:03:55', 1971, 'b1028', 'Sticky Fingers', 's10287');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Sister Morphine', '00:05:35', 1971, 'b1028', 'Sticky Fingers', 's10288');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Dead Flowers', '00:04:05', 1971, 'b1028', 'Sticky Fingers', 's10289');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Moonlight Mile', '00:05:55', 1971, 'b1028', 'Sticky Fingers', 's102810');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Speak to Me / Breathe', '00:03:58', 1973, 'b9853', 'The Dark Side of the Moon', 's98531');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
 Values('On the Run', '00:03:35', 1973, 'b9853', 'The Dark Side of the Moon', 's98532');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
-Values('Welcome to the Machine', '00:07:27', 1975, 'b9853', 'Wish You Were Here', 's985311');
+Values('Time', '00:07:05', 1973, 'b9853', 'The Dark Side of the Moon', 's98533');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('The Great Gig in the Sky', '00:04:44', 1973, 'b9853', 'The Dark Side of the Moon', 's98534');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Money', '00:06:23', 1973, 'b9853', 'The Dark Side of the Moon', 's98535');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Us and Them', '00:07:50', 1973, 'b9853', 'The Dark Side of the Moon', 's98536');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Any Colour You Like', '00:03:26', 1973, 'b9853', 'The Dark Side of the Moon', 's98537');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Brain Damage', '00:03:47', 1973, 'b9853', 'The Dark Side of the Moon', 's98538');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Eclipse', '00:02:01', 1973, 'b9853', 'The Dark Side of the Moon', 's98539');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Shine On You Crazy Diamond, Parts 1-5', '00:13:19', 1975, 'b9853', 'Wish You Were Here', 's9835310');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Welcome to the Machine', '00:07:27', 1975, 'b9853', 'Wish You Were Here', 's9835311');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Have a Cigar', '00:05:08', 1975, 'b9853', 'Wish You Were Here', 's9835312');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Wish You Were Here', '00:05:40', 1975, 'b9853', 'Wish You Were Here', 's9835313');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Shine On You Crazy Diamond, Parts 6-9', '00:12:23', 1975, 'b9853', 'Wish You Were Here', 's9835314');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
 Values('Welcome to the Jungle', '00:04:34', 1987, 'b8796', 'Appetite for Destruction', 's87961');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Its So easy', '00:03:23', 1987, 'b8796', 'Appetite for Destruction', 's87962');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Nightrain', '00:04:28', 1987, 'b8796', 'Appetite for Destruction', 's87963');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Out Ta Get Me', '00:04:24', 1987, 'b8796', 'Appetite for Destruction', 's87964');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Mr. Brownstone', '00:03:49', 1987, 'b8796', 'Appetite for Destruction', 's87965');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Paradise City', '00:06:46', 1987, 'b8796', 'Appetite for Destruction', 's87966');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('My Michelle', '00:03:40', 1987, 'b8796', 'Appetite for Destruction', 's87967');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Think About You', '00:03:52', 1987, 'b8796', 'Appetite for Destruction', 's87968');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Sweet Child O Mine', '00:05:56', 1987, 'b8796', 'Appetite for Destruction', 's87969');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Youre Crazy', '00:03:17', 1987, 'b8796', 'Appetite for Destruction', 's879610');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Anything Goes', '00:03:26', 1987, 'b8796', 'Appetite for Destruction', 's879611');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Rocket Queen', '00:06:13', 1987, 'b8796', 'Appetite for Destruction', 's879612');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
 Values('Blackened', '00:06:42', 1988, 'b5840', '...And Justice for All', 's58401');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
-Values('Uncle Salty', '00:04:10', 1975, 'b5769' , 'Toys in the Attic', 's57692');
+Values('...And Justice for All', '00:09:46', 1988, 'b5840', '...And Justice for All', 's58402');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Eye of the Beholder', '00:06:25', 1988, 'b5840', '...And Justice for All', 's58403');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('One After 909', '00:07:26', 1988, 'b5840', '...And Justice for All', 's58404');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('The Shortest Straw', '00:06:35', 1988, 'b5840', '...And Justice for All', 's58405');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Harvester of Sorrow', '00:05:45', 1988, 'b5840', '...And Justice for All', 's58406');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('The Frayed Ends of Sanity', '00:07:44', 1988, 'b5840', '...And Justice for All', 's58407');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('To Live Is to Die', '00:09:48', 1988, 'b5840', '...And Justice for All', 's58408');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Dyers Eve', '00:05:14', 1988, 'b5840', '...And Justice for All', 's58409');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Toys in the Attic', '00:03:07', 1975, 'b5769', 'Toys in the Attic', 's57691');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Uncle Salty', '00:04:10', 1975, 'b5769', 'Toys in the Attic', 's57692');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Adams Apple', '00:04:34', 1975, 'b5769', 'Toys in the Attic', 's57693');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Walk This Way', '00:03:41', 1975, 'b5769', 'Toys in the Attic', 's57694');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Big Ten Inch Record', '00:02:15', 1975, 'b5769', 'Toys in the Attic', 's57695');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Sweet Emotion', '00:04:35', 1975, 'b5769', 'Toys in the Attic', 's57696');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('No More No More', '00:04:34', 1975, 'b5769', 'Toys in the Attic', 's57697');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Round and Round', '00:05:03', 1975, 'b5769', 'Toys in the Attic', 's57698');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('You See Me Crying', '00:05:12', 1975, 'b5769', 'Toys in the Attic', 's57699');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Xmas Time of the Year', '00:02:17', 2015, 'b3829', '', 's38291');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('I Just Want to Have Something to do', '00:02:42', 1978, 'b2234', 'Road to Ruin', 's22341');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
 Values('I Wanted Everything', '00:03:19', 1978, 'b2234', 'Road to Ruin', 's22342');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
-Values('T.N.T.', '00:03:42', 1979, 'b0505', 'T.N.T.', 's05051');
+Values('Dont Come Close', '00:02:45', 1978, 'b2234', 'Road to Ruin', 's22343');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
-Values('Back in Black', '00:04:14', 1975, 'b050', 'Back in Black', 's05052');
+Values('I Dont Want You', '00:02:27', 1978, 'b2234', 'Road to Ruin', 's22344');
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
-Values('Highway to Hell', '00:03:28', 1979, 'b0505', 'Highway to Hell', 's05053');
-
+Values('Needles & Pins', '00:02:22', 1978, 'b2234', 'Road to Ruin', 's22345');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Im Against It', '00:02:07', 1978, 'b2234', 'Road to Ruin', 's22346');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('I Wanna Be Sedated', '00:02:30', 1978, 'b2234', 'Road to Ruin', 's22347');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Go Mental', '00:02:43', 1978, 'b2234', 'Road to Ruin', 's22348');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Questiongly', '00:03:22', 1978, 'b2234', 'Road to Ruin', 's22349');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Shes the One', '00:02:13', 1978, 'b2234', 'Road to Ruin', 's223410');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Bad Brain', '00:02:25', 1978, 'b2234', 'Road to Ruin', 's223411');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Its a Long Way Back', '00:02:21', 1978, 'b2234', 'Road to Ruin', 's223412');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('T.N.T.', '00:03:42', 1979, 'b0505', 'T.N.T.', 's5051');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Back in Black', '00:04:14', 1975, 'b0505', 'Back in Black', 's5052');
+INSERT INTO Song
+    (Name, Duration, Year_Released, Band_id, Album, Song_id)
+Values('Highway to Hell', '00:03:28', 1979, 'b0505', 'Highway to Hell', 's5053');
 
 
 
@@ -358,28 +654,28 @@ INSERT INTO AlbumTracks
 Values('a1', 's47329');
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
-Values('a1', 's473210');
+Values('a1', 's437210');
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
-Values('a1', 's473211');
+Values('a1', 's437211');
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
-Values('a1', 's473212');
+Values('a1', 's437212');
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
-Values('a1', 's473213');
+Values('a1', 's437213');
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
-Values('a1', 's473214');
+Values('a1', 's437214');
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
-Values('a1', 's473215');
+Values('a1', 's437215');
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
-Values('a1', 's473216');
+Values('a1', 's437216');
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
-Values('a1', 's473217');
+Values('a1', 's437217');
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
 Values('a2', 's437223');
@@ -471,34 +767,34 @@ INSERT INTO Venue
 Values('Gorge Amphitheatre', '754 Silica Road Northwest', 'George', 'WA', 1985, NULL, 'v01');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('72 Meadowbrook Ln', 'Gilford', 'NH', 1996, NULL, 'v02');
+Values('Bank of New Hampshire Pavilion', '72 Meadowbrook Ln', 'Gilford', 'NH', 1996, NULL, 'v02');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('901 W Sprague Ave', 'Spokane', 'WA', 1915, NULL, 'v03');
+Values('Crosby Theatre', '901 W Sprague Ave', 'Spokane', 'WA', 1915, NULL, 'v03');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('500 Jefferson Ave', 'Toledo', 'OH', 1915, NULL, 'v04');
+Values('Huntington Theatre', '500 Jefferson Ave', 'Toledo', 'OH', 1915, NULL, 'v04');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('6 Championship Dr', 'Auburn Hills', 'MI', 1988, 2017, 'v05');
+Values('The Palace of Auburn Hills', '6 Championship Dr', 'Auburn Hills', 'MI', 1988, 2017, 'v05');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('1001 Performance Pl', 'Grand Prarie', 'TX', 2002, NULL, 'v06');
+Values('Verizon Theatre at Grand Prairie', '1001 Performance Pl', 'Grand Prarie', 'TX', 2002, NULL, 'v06');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('12880 E 146th St', 'Noblesvilli', 'IN', 1989, NULL, 'v07');
+Values('Kipsch Music Theatre', '12880 E 146th St', 'Noblesvilli', 'IN', 1989, NULL, 'v07');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('2401 W Wisconsin Ave', 'Milwaukee', 'WI', 1927, NULL, 'v08');
+Values('Eagles Club', '2401 W Wisconsin Ave', 'Milwaukee', 'WI', 1927, NULL, 'v08');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('885 S Main St', 'Mansfield', 'MA', 1986, NULL, 'v09');
+Values('Xfinity Center', '885 S Main St', 'Mansfield', 'MA', 1986, NULL, 'v09');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('15 Lansdowne', 'Boston', 'MA', 1992, NULL, 'v10');
+Values('House of Blues', '15 Lansdowne', 'Boston', 'MA', 1992, NULL, 'v10');
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-Values('5515 Wilshire Blvd', 'Los Angeles', 'CA', 1936, NULL, 'v11');
+Values('El Rey Theatre', '5515 Wilshire Blvd', 'Los Angeles', 'CA', 1936, NULL, 'v11');
 
 
 ---------------------- INSERTING SHOWS ATTENDED ----------------------
@@ -540,34 +836,34 @@ Values('e8473645', 'p47321');
 ---------------------- INSERTING FAVORITE BANDS ----------------------
 
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e9302049', 'b4732');
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e8603543', 'b3850');
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e1029472', 'b4654');
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e9475934', 'b1028');
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e8462344', 'b8796');
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e3959303', 'b8796');
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e4857293', 'b5840');
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e9475734', 'b5769');
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e4757434', 'b3850');
 INSERT INTO FavoriteBands
-    (User_id,Band_id0)
+    (User_id,Band_id)
 Values('e8473645', 'b4654');
 
 

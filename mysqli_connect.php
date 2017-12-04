@@ -8,7 +8,7 @@
 DEFINE ('DB_USER', 'root');
 DEFINE ('DB_PASSWORD', 'root');
 DEFINE ('DB_HOST', 'localhost');
-DEFINE ('DB_NAME', 'music');
+DEFINE ('DB_NAME', 'music2');
 //DEFINE ('DB_PORT', '8889');
 
 // $db will contain a resource link to the database
