@@ -1,4 +1,4 @@
-create table User
+Acreate table User
 (
     Fname VARCHAR(32) NOT NULL,
     Lname VARCHAR(32) NOT NULL,
@@ -16,7 +16,7 @@ create table Band
 );
 create table Album
 (
-    Album_name VARCHAR(32) NOT NULL,
+    Album VARCHAR(32) NOT NULL,
     Band_id VARCHAR(32) NOT NULL,
     Year_Released INT NOT NULL,
     Record_Label VARCHAR(32) NOT NULL,
@@ -35,7 +35,7 @@ create table Song
     Duration TIME NOT NULL,
     Year_Released INT NOT NULL,
     Band_id VARCHAR(32) NOT NULL,
-    Album_id VARCHAR(32),
+    Album VARCHAR(32),
     Song_id VARCHAR(32) NOT NULL Primary key
 
 );
@@ -90,6 +90,23 @@ create table AlbumTracks
 );
 
 
+create table BandComments
+(
+    Band_id VARCHAR(32) NOT NULL,
+    User_id VARCHAR(32) NOT NULL,
+    Comment VARCHAR(128) NOT NULL,
+    Count_id INT NOT NULL
+);
+create table PerformanceComments
+(
+    Performance_id VARCHAR(32) NOT NULL,
+    User_id VARCHAR(32) NOT NULL,
+    Comment VARCHAR(128) NOT NULL,
+    Count_id INT NOT NULL
+);
+
+
+
 ---------------------- INSERTING INFO INTO USER ----------------------
 
 
@@ -140,7 +157,38 @@ INSERT INTO Band (Band_Name,Band_id,Formation_Date,Breakup_Date)
     Values('Ramones','b2234','1974-4-4','1996-1-9');
 
 
+---------------------- INSERTING ALBUMS ----------------------
 
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Abbey Road', 'b4732', 1969, 'Conover Records', 'a1');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Let It Be', 'b4732', 1970, 'Oakes Records', 'a2');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Heaven and Hell', 'b3850', 1980, 'ATL Beatz', 'a3');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Physical Graffiti', 'b4654', 1980, 'Tang Records', 'a4');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Coda', 'b4654', 1982, 'CSC Records', 'a5');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Sticky Fingers', 'b1028', 1971, 'SCS Records', 'a6');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('The Dark Side of the Moon', 'b1028', 1973, 'SCS Records', 'a7');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Wish You Were Here', 'b9853', 1975, 'WYWH Records', 'a8');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Appetite for Destruction', 'b8796', 1987, 'Gunz Records', 'a9');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('...And Justice for All', 'b5840', 1988, 'Wowza Records', 'a10');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Toys in the Attic', 'b5769', 1975, 'TIA Records', 'a11');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Road to Ruin', 'b2234', 1978, 'RtR Records', 'a12');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('T.N.T.', 'b0505', 1979, 'ACDC Records', 'a13');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Back in Black', 'b0505', 1975, 'ACDC Records', 'a14');
+INSERT INTO Album(Album,Band_id,Year_Released,Record_Label,Album_id)
+    values('Highway to Hell', 'b0505', 1979, 'ACDC Records', 'a15');
 
 
 ---------------------- INSERTING SONGS ----------------------
@@ -210,6 +258,76 @@ INSERT INTO Song(Name, Duration, Year_Released, Band_id, Album, Song_id)
 
 
 
+
+
+---------------------- INSERTING ALBUM TRACKS ----------------------
+
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s47321');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s47322');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s47323');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s47324');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s47325');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s47326');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s47327');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s47328');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s47329');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s473210');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s473211');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s473212');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s473213');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s473214');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s473215');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s473216');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a1','s473217');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a2','s437223');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a3','s38501');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a4','s46542');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a5','s465416');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a6','s10282');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a7','s98532');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a8','s985311');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a9','s87961');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a10','s58401');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a11','s57692');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a12','s22342');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a13','s05051');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a14','s05052');
+INSERT INTO AlbumTracks(Album_id,Song_id)
+    Values('a15','s05053');
+
+
+
+
 ---------------------- INSERTING PERFORMANCES ----------------------
 
 INSERT INTO Performance(Venue_id,Band_id,Performance_date,Duration,Performance_id)
@@ -242,50 +360,73 @@ INSERT INTO Performance(Venue_id,Band_id,Performance_date,Duration,Performance_i
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
     Values('Gorge Amphitheatre', '754 Silica Road Northwest', 'George', 'WA', 1985, NULL,'v01');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('Trocadero','72 Meadowbrook Ln', 'Gilford', 'NH',1996,NULL,'v02');
+    Values('72 Meadowbrook Ln', 'Gilford', 'NH',1996,NULL,'v02');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('Black Cat','901 W Sprague Ave','Spokane','WA',1915,NULL,'v03');
+    Values('901 W Sprague Ave','Spokane','WA',1915,NULL,'v03');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('Electric Factory','500 Jefferson Ave', 'Toledo', 'OH', 1915, NULL,'v04');
+    Values('500 Jefferson Ave', 'Toledo', 'OH', 1915, NULL,'v04');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('Ottobar','6 Championship Dr', 'Auburn Hills', 'MI', 1988,2017,'v05');
+    Values('6 Championship Dr', 'Auburn Hills', 'MI', 1988,2017,'v05');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('Charles Theatre','1001 Performance Pl', 'Grand Prarie', 'TX', 2002,NULL,'v06');
+    Values('1001 Performance Pl', 'Grand Prarie', 'TX', 2002,NULL,'v06');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('Powerplant Live','12880 E 146th St', 'Noblesvilli', 'IN', 1989,NULL,'v07');
+    Values('12880 E 146th St', 'Noblesvilli', 'IN', 1989,NULL,'v07');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('Parkway','2401 W Wisconsin Ave', 'Milwaukee', 'WI',1927,NULL,'v08');
+    Values('2401 W Wisconsin Ave', 'Milwaukee', 'WI',1927,NULL,'v08');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('Royal Farms Arena','885 S Main St', 'Mansfield', 'MA',1986,NULL,'v09');
+    Values('885 S Main St', 'Mansfield', 'MA',1986,NULL,'v09');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('Merriweather','15 Lansdowne','Boston','MA', 1992,NULL,'v10');
+    Values('15 Lansdowne','Boston','MA', 1992,NULL,'v10');
 INSERT INTO Venue(Name, Address, City, State, Date_opened, Date_closed, Venue_id)
-    Values('The Pavilion','5515 Wilshire Blvd', 'Los Angeles', 'CA', 1936,NULL,'v11');
+    Values('5515 Wilshire Blvd', 'Los Angeles', 'CA', 1936,NULL,'v11');
 
 
+---------------------- INSERTING SHOWS ATTENDED ----------------------
 
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e9302049','p22341');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e9302049','p05051');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e8603543','p87962');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e1029472','p38501');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e9475934','p38291');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e8462344','p10281');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e3959303','p98531');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e4857293','p58401');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e9475734','p58402');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e4757434','p57691');
+INSERT INTO ShowsAttended(User_id, Performance_id)
+    Values('e8473645','p47321');
 
----------------------- FAVORITE BANDS ----------------------
+---------------------- INSERTING FAVORITE BANDS ----------------------
 
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e9302049','b4732');
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e8603543','b3850');
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e1029472','b4654');
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e9475934','b1028');
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e8462344','b8796');
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e3959303','b8796');
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e4857293','b5840');
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e9475734','b5769');
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e4757434','b3850');
-INSERT INTO FavoriteBands(User_id,Band_id)
+INSERT INTO FavoriteBands(User_id,Band_id0)
     Values('e8473645','b4654');
 
 
