@@ -1,7 +1,11 @@
 <?php 
+session_start();
+
 include "../mysqli_connect.php";
 require '../vendor/autoload.php';
-
+if (!(isset($_SESSION["user"]))) {
+        header("Location: ../pages/splash.php");
+}
 $query = "SELECT Album_name, Album_id, Album.Band_id, Band_Name FROM Album
           LEFT JOIN Band on Album.Band_id = Band.Band_id";
 mysqli_query($db, $query) or die('Error querying database.');

@@ -15,7 +15,12 @@
         if ($result->num_rows == 1) {
             // user successfully authenticated
             $_SESSION["user"] = $result->fetch_array(MYSQLI_ASSOC);
-            header("Location: ../pages/home.php");
+            if($_SESSION['user']['Admin'] == 1){
+                header("Location: ../pages/admin.php");
+            }
+            else{
+                header("Location: ../pages/home.php");
+            }
         } else {
             header("Location: ../pages/login.php");
         }

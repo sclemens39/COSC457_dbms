@@ -1,6 +1,10 @@
 <?php 
-include "../mysqli_connect.php";
+session_start();
 
+include "../mysqli_connect.php";
+if (!(isset($_SESSION["user"]))) {
+        header("Location: ../pages/splash.php");
+}
 $query = "SELECT * FROM Band";
 mysqli_query($db, $query) or die('Error querying database.');
 
@@ -10,6 +14,7 @@ $row = mysqli_fetch_array($result);
 while ($row = mysqli_fetch_array($result)) {
     $bands[] = $row;
 }
+
 ?>
 
 <!DOCTYPE html>

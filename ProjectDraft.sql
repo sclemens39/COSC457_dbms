@@ -23,12 +23,6 @@ create table Album
     Album_id VARCHAR(32) NOT NULL Primary key
 
 );
-create table Member
-(
-    Fname VARCHAR(32) NOT NULL,
-    Lname VARCHAR(32) NOT NULL
-
-);
 create table Song
 (
     Name VARCHAR(32) NOT NULL,

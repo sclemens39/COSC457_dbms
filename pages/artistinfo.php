@@ -1,7 +1,9 @@
 <?php 
 session_start();
 include "../mysqli_connect.php";
-
+if (!(isset($_SESSION["user"]))) {
+        header("Location: ../pages/splash.php");
+}
 $q = $db->prepare("SELECT * FROM Band 
         LEFT JOIN BandMembers on Band.Band_id = BandMembers.Band_id 
         LEFT JOIN BandComments on Band.Band_id = BandComments.Band_id 

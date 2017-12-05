@@ -4,7 +4,7 @@
         $band = $_GET["id"];
         $comment = $_POST['comment'];
         $user = $_SESSION['user']['User_id'];
-        $id = uniqid(rand());
+        $id = uniqid(rand(0,20000000),true);
 
         $q = $db->prepare("INSERT INTO BandComments(Band_id,User_id,Comment,Count_id)
                             VALUES(?, ?, ?, ?);");

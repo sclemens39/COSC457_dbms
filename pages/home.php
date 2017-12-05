@@ -1,6 +1,10 @@
 <?php 
 session_start();
 include "../mysqli_connect.php";
+if (!(isset($_SESSION["user"]))) {
+        header("Location: ../pages/splash.php");
+}
+
 $q = $db->prepare("SELECT * FROM Band LEFT JOIN FavoriteBands on Band.Band_id = FavoriteBands.Band_id Where User_id = ?");
 $q->bind_param("s", $_SESSION['user']['User_id']);
 $q->execute();

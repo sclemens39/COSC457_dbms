@@ -1,7 +1,9 @@
 <?php 
-include "../mysqli_connect.php";
 session_start();
-
+include "../mysqli_connect.php";
+if (!(isset($_SESSION["user"]))) {
+        header("Location: ../pages/splash.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +64,9 @@ session_start();
                                         <li>
                                             <a href="../pages/home.php">Dashboard</a>
                                         </li>
+                                        <? if($_SESSION['user']['Admin'] == 1){?><li>
+                                            <a href="../pages/admin.php">Admin</a>
+                                        </li><?}?>
                                         <li>
                                             <a href="../helpers/logout.php">Logout</a>
                                         </li>
