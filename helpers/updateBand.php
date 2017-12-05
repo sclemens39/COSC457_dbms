@@ -8,7 +8,7 @@ if ($db->affected_rows == 1) {
     echo "Successfully updated!";
 }
 else{
-    echo "Error! Contact DB Administrator";
+    echo "Error!";
 }
 $q->close();
 ?>

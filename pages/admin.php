@@ -36,7 +36,7 @@ $row = mysqli_fetch_array($result);
 while ($row = mysqli_fetch_array($result)) {
     $bands[] = $row;
 }
-$query = "SELECT * FROM Song";
+$query = "SELECT * FROM Song LEFT JOIN Band on Song.Band_id = Band.Band_id";
 mysqli_query($db, $query) or die('Error querying database.');
 
 $result = mysqli_query($db, $query);
@@ -61,6 +61,43 @@ $pcomments =[];
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 				array_push($pcomments, $row);
 }
+$query = "SELECT * FROM Performance 
+                    LEFT JOIN Band
+                    on Performance.Band_id = Band.Band_id
+                    LEFT JOIN Venue
+                    on Performance.Venue_id = Venue.Venue_id";
+mysqli_query($db, $query) or die('Error querying database.');
+
+$result = mysqli_query($db, $query);
+$shows = array();
+$row = mysqli_fetch_array($result);
+while ($row = mysqli_fetch_array($result)) {
+    $shows[] = $row;
+}
+$query = "SELECT * FROM AlbumTracks
+                    LEFT JOIN Album
+                    on AlbumTracks.Album_id = Album.Album_id
+                    LEFT JOIN Song
+                    on AlbumTracks.Song_id = Song.Song_id";
+mysqli_query($db, $query) or die('Error querying database.');
+
+$result = mysqli_query($db, $query);
+$tlist = array();
+$row = mysqli_fetch_array($result);
+while ($row = mysqli_fetch_array($result)) {
+    $tlist[] = $row;
+}
+$query = "SELECT * FROM Setlist 
+                    LEFT JOIN Song
+                    on Setlist.Song_id = Song.Song_id";
+mysqli_query($db, $query) or die('Error querying database.');
+
+$result = mysqli_query($db, $query);
+$slist = array();
+$row = mysqli_fetch_array($result);
+while ($row = mysqli_fetch_array($result)) {
+    $slist[] = $row;
+}
 ?>
     <!DOCTYPE html>
     <html>
@@ -84,19 +121,22 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         <script src=" https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
         <script>
             $(document).ready(function () {
-                 $("#comments").show();
-                $("#bands, #albums, #songs, #show").hide();
                 $('.editbtn').click(function () {
                     var currentTD = $(this).parents('tr').find('td');
                     if ($(this).html() == 'Edit') {
+                        $('button').prop('disabled',true);
                         $.each(currentTD, function () {
                             $(this).prop('contenteditable', true)
                         });
                     } else {
+                        $('button').prop('disabled',false);
                         $.each(currentTD, function () {
                             $(this).prop('contenteditable', false)
                         });
                     }
+                    
+                    $('.editbtn').prop('disabled',false);
+
                     $('.id').prop('contenteditable', false);
                     $('.actions').prop('contenteditable', false);
                     $(this).html($(this).html() == 'Edit' ? 'Done' : 'Edit')
@@ -141,6 +181,26 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                         }
                     });
                 });
+                 $('.savebtnShow').click(function () {
+                    var pos = $(this).parents('tr').find('.edit').find('p');
+                    i = 0;
+                    $edit = [];
+                    $.each(pos, function () {
+                        $edit[i] = $(this).html().trim();
+                        i = i + 1;
+                    });
+                    $.ajax({
+                        url: '../helpers/updateShow.php',
+                        type: 'post',
+                        data: {
+                            data: $edit
+                        },
+                        datatype: 'html',
+                        success: function (rsp) {
+                            alert(rsp);
+                        }
+                    });
+                });
                 $('.savebtnAlbum').click(function () {
                     var pos = $(this).parents('tr').find('.edit').find('p');
                     i = 0;
@@ -161,6 +221,10 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                         }
                     });
                 });
+               
+                 $("#allNav").click(function (event) {
+                        $("#comments, #bands, #albums, #songs, #show").show();
+                 });
                 $("#albumNav").click(function (event) {
                         $("#albums").show();
                         $("#songs, #bands, #shows, #comments").hide();
@@ -197,6 +261,9 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
+                        <a id="allNav" class="nav-link" href="#albums">All</a>
+                    </li>
+                    <li class="nav-item">
                         <a id="albumNav" class="nav-link" href="#albums">Albums</a>
                     </li>
                     <li class="nav-item">
@@ -221,7 +288,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 
         <br><br>
 
-        <div class = "container">
+        <div class = "container-fluid">
             <div id = "bands">
             <table class="table table-striped table-bordered table-hover">
                 <h3  class="text-center">Bands</h3>
@@ -258,14 +325,16 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                             <td class="actions">
                                 <button type="submit" class="btn btn-outline-success savebtnBand">Save</button>
                                 <button class="btn btn-outline-info editbtn">Edit</button>
-                                <a class="btn btn-outline-danger" href="../helpers/deleteBand.php?=<?echo $row['Band_id']?>" onclick="return confirm('Are you sure?');">Delete</a>
+                                <a class="btn btn-outline-danger" href="../helpers/deleteArtist.php?id=<?echo $row['Band_id']?>" onclick="return confirm('Are you sure?');">Delete</a>
                             </td>
                         </tr>
                         <?}?>
                 </tbody>
             </table>
-                    </div>
+            </div>
+ 
             <div id = "songs">
+                <hr>
             <table class="table table-striped table-bordered table-hover">
                 <h3  class="text-center">Songs</h3>
                 <tbody>
@@ -289,6 +358,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                 <p>
                                     <?echo $row['Band_id']?>
                                 </p>
+                                (<?echo $row['Band_Name']?>)
                             </td>
                             <td class="edit">
                                 <p>
@@ -313,14 +383,16 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                             <td class="actions">
                                 <button type="submit" class="btn btn-outline-success savebtnSong">Save</button>
                                 <button class="btn btn-outline-info editbtn">Edit</button>
-                                <a class="btn btn-outline-danger" href="../helpers/deleteSong.php?=<?echo $row['Song_id']?>" onclick="return confirm('Are you sure?');">Delete</a>
+                                <a class="btn btn-outline-danger" href="../helpers/deleteSong.php?id=<?echo $row['Song_id']?>" onclick="return confirm('Are you sure?');">Delete</a>
                             </td>
                         </tr>
                         <?}?>
                 </tbody>
             </table>
             </div>
+      
             <div id = "albums">
+                <hr>
             <table class="table table-striped table-bordered table-hover">
                 <h3  class="text-center">Albums</h3>
                 <tbody>
@@ -343,6 +415,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                 <p>
                                     <?echo $row['Band_id']?>
                                 </p>
+                                (<?echo $row['Band_Name']?>)
                             </td>
                             <td class="edit">
                                 <p>
@@ -362,14 +435,186 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                             <td class="actions">
                                 <button type="submit" class="btn btn-outline-success savebtnAlbum">Save</button>
                                 <button class="btn btn-outline-info editbtn">Edit</button>
-                                <a class="btn btn-outline-danger" href="../helpers/deleteAlbum.php?=<?echo $row['Album_id']?>" onclick="return confirm('Are you sure?');">Delete</a>
+                                <a class="btn btn-outline-danger" href="../helpers/deleteAlbum.php?id=<?echo $row['Album_id']?>" onclick="return confirm('Are you sure?');">Delete</a>
                             </td>
                         </tr>
                         <?}?>
                 </tbody>
             </table>
+            <table class="table table-striped table-bordered table-hover">
+                <h3  class="text-center">Track List</h3>
+                <tbody>
+                    <tr>
+                        <th>Album Id</th>
+                        <th>Song Id</th>
+                        <th>Actions</th>
+                    </tr>
+                    <?foreach($tlist as $row) {?>
+                        <tr>
+                            <td class="edit id">
+                                <p>
+                                    <?echo $row['Album_id']?>
+                                </p>
+                                (<?echo $row['Album_name']?>)
+                            </td>
+                            <td class="edit id">
+                                <p>
+                                    <?echo $row['Song_id']?>
+                                </p>
+                                (<?echo $row['Name']?>)
+                            </td>
+                            <td class="actions">
+                                <a class="btn btn-outline-danger" href="../helpers/deleteTrack.php?album=<?echo $row['Album_id']?>&song=<?echo $row['Song_id']?>" onclick="return confirm('Are you sure?');">Delete</a>
+                            </td>
+                        </tr>
+                        <?}?>
+                </tbody>
+            </table>
+                <button class="btn btn-success" data-toggle="modal" data-target="#trackModal">New</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="trackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tmodalLabel">Add to Album Tracks</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="post" action = "../helpers/addToTrack.php">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="albumID">Album ID</label>
+                                    <input required type="text" class="form-control" name = "albumID" id="albumID">
+                                </div>
+                                <div class="form-group">
+                                    <label for= "songID">Song ID</label>
+                                    <input required type="text" class="form-control" name = "songID" id="songID">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            <div id = "shows">
+                <hr>
+            <table class="table table-striped table-bordered table-hover">
+                <h3  class="text-center">Shows</h3>
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <th>Venue Id</th>
+                        <th>Band_id</th>
+                        <th>Performance_date</th>
+                        <th>Duration</th>
+                        <th>Actions</th>
+                    </tr>
+                    <?foreach($shows as $row) {?>
+                        <tr>
+                            <td class="edit id">
+                                <p>
+                                    <?echo $row['Performance_id']?>
+                                </p>
+                            </td>
+                            <td class="edit id">
+                                <p>
+                                    <?echo $row['Venue_id']?>
+                                </p>
+                                (<?echo $row['Name']?>)
+                            </td>
+                            <td class="edit id">
+                                <p>
+                                    <?echo $row['Band_id']?>
+                                </p>
+                                (<?echo $row['Band_Name']?>)
+                            </td>
+                            <td class="edit">
+                                <p>
+                                    <?echo $row['Performance_date']?>
+                                </p>
+                            </td>
+                            <td class="edit">
+                                <p>
+                                    <?echo $row['Duration']?>
+                                </p>
+                            </td>
+                            <td class="actions">
+                                <button type="submit" class="btn btn-outline-success savebtnShow">Save</button>
+                                <button class="btn btn-outline-info editbtn">Edit</button>
+                                <a class="btn btn-outline-danger" href="../helpers/deleteShow.php?id=<?echo $row['Performance_id']?>" onclick="return confirm('Are you sure?');">Delete</a>
+                            </td>
+                        </tr>
+                        <?}?>
+                </tbody>
+            </table>
+            <table class="table table-striped table-bordered table-hover">
+                <h3  class="text-center">Set List</h3>
+                <tbody>
+                    <tr>
+                        <th>Performance Id</th>
+                        <th>Song Id</th>
+                        <th>Actions</th>
+                    </tr>
+                    <?foreach($slist as $row) {?>
+                        <tr>
+                            <td class="edit id">
+                                <p>
+                                    <?echo $row['Performance_id']?>
+                                </p>
+                            </td>
+                            <td class="edit id">
+                                <p>
+                                    <?echo $row['Song_id']?>
+                                </p>
+                                (<?echo $row['Name']?>)
+                            </td>
+                            <td class="actions">
+                                <a class="btn btn-outline-danger" href="../helpers/deleteSet.php?show=<?echo $row['Performance_id']?>&song=<?echo $row['Song_id']?>" onclick="return confirm('Are you sure?');">Delete</a>
+                            </td>
+                        </tr>
+                        <?}?>
+                </tbody>
+            </table>
+            <button class="btn btn-success" data-toggle="modal" data-target="#setModal">New</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="setModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="smodalLabel">Add to Show Set-list</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="post" action = "../helpers/addToSet.php">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="showID">Performance ID</label>
+                                    <input required type="text" class="form-control" name = "showID" id="showID">
+                                </div>
+                                <div class="form-group">
+                                    <label for= "songID">Song ID</label>
+                                    <input required type="text" class="form-control" name = "songID" id="songID">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            
             <div id="comments">
+                <hr>
                 <h3   class="text-center">Comments</h3>
                 <br>
             <table id="bandComm" class="table table-striped table-bordered table-hover">
