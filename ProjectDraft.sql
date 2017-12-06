@@ -135,7 +135,6 @@ INSERT INTO User
     (Fname,Lname,Admin,User_id,Age,Email)
 VALUES('Stephen', 'Hodges', FALSE, 'e8473645', 39, 'Shodges@gmail.com' );
 
----------------------- INSERTING BANDS ----------------------
 
 INSERT INTO Band
     (Band_Name,Band_id,Formation_Date,Breakup_Date)
@@ -172,7 +171,6 @@ INSERT INTO Band
 Values('Ramones', 'b2234', '1974-4-4', '1996-1-9');
 
 
----------------------- INSERTING ALBUMS ----------------------
 
 INSERT INTO Album
     (Album_name,Band_id,Year_Released,Record_Label,Album_id)
@@ -221,7 +219,6 @@ INSERT INTO Album
 values('Highway to Hell', 'b0505', 1979, 'ACDC Records', 'a15');
 
 
----------------------- INSERTING SONGS ----------------------
 
 INSERT INTO Song
     (Name, Duration, Year_Released, Band_id, Album, Song_id)
@@ -616,9 +613,6 @@ Values('Highway to Hell', '00:03:28', 1979, 'b0505', 'Highway to Hell', 's5053')
 
 
 
-
----------------------- INSERTING ALBUM TRACKS ----------------------
-
 INSERT INTO AlbumTracks
     (Album_id,Song_id)
 Values('a1', 's47321');
@@ -715,9 +709,6 @@ Values('a15', 's05053');
 
 
 
-
----------------------- INSERTING PERFORMANCES ----------------------
-
 INSERT INTO Performance
     (Venue_id,Band_id,Performance_date,Duration,Performance_id)
 Values('v01', 'b2234', '1985-3-5', '00:04:32', 'p22341');
@@ -754,7 +745,6 @@ Values('v11', 'b4732', '1998-9-9', '00:04:32', 'p47321');
 
 
 
----------------------- INSERTING VENUES ----------------------
 
 INSERT INTO Venue
     (Name, Address, City, State, Date_opened, Date_closed, Venue_id)
@@ -791,7 +781,6 @@ INSERT INTO Venue
 Values('El Rey Theatre', '5515 Wilshire Blvd', 'Los Angeles', 'CA', 1936, NULL, 'v11');
 
 
----------------------- INSERTING SHOWS ATTENDED ----------------------
 
 INSERT INTO ShowsAttended
     (User_id, Performance_id)
@@ -827,7 +816,6 @@ INSERT INTO ShowsAttended
     (User_id, Performance_id)
 Values('e8473645', 'p47321');
 
----------------------- INSERTING FAVORITE BANDS ----------------------
 
 INSERT INTO FavoriteBands
     (User_id,Band_id)
@@ -861,7 +849,6 @@ INSERT INTO FavoriteBands
 Values('e8473645', 'b4654');
 
 
----------------------- BAND MEMBERS ----------------------
 
 INSERT INTO BandMembers
     (Band_id,Member_fname,Member_lname,Years_active,Instrument)
@@ -952,7 +939,6 @@ INSERT INTO BandMembers
 Values('b2234', 'Dee Dee', 'Ramone', 15, 'Bass');
 
 
----------------------- SETLIST ----------------------
 
 INSERT INTO Setlist
     (Performance_id,Song_id)
